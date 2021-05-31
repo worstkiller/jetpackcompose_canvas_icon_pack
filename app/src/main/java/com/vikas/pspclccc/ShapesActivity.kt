@@ -7,6 +7,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +19,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,10 +34,10 @@ class ShapesActivity : ComponentActivity() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
-
                 instagramIcon()
                 facebookIcon()
-                whatsAppIcon()
+                messengerIcon()
+                googleIcon()
             }
         }
     }
@@ -89,7 +93,7 @@ fun facebookIcon() {
 }
 
 @Composable
-fun whatsAppIcon() {
+fun messengerIcon() {
     val colors = listOf(Color(0xFF02b8f9), Color(0xFF0277fe))
     Canvas(
         modifier = Modifier
@@ -132,63 +136,75 @@ fun whatsAppIcon() {
     }
 }
 
+
 @Composable
-fun drawShapes() {
+fun googleIcon() {
 
-    Canvas(modifier = Modifier.fillMaxSize()) {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        val width = this.size.width
+        val height = this.size.height
 
-        drawCircle(
-            color = Color.Black,
-            radius = 300f,
-            this.center,
-            1f,
-            style = Fill,
-            null,
-            blendMode = BlendMode.SrcIn
+        val path = Path()
+        path.moveTo(width / 2, height / 2)
+        path.lineTo(width + 5, height * .05f)
+        path.lineTo(width + 20, height * 0.45f)
+
+
+        clipPath(path = path, clipOp = ClipOp.Difference) {
+            drawCircle(
+                color = Color.Transparent,
+                radius = 100f,
+                style = Stroke(40f, cap = StrokeCap.Round)
+            )
+            drawPath(path = path, color = Color.Transparent)
+        }
+
+        drawRect(
+            color = Color(0xFF4384f3),
+            size = Size(width * .55f, 20f),
+            topLeft = Offset(width * .55f, height * .45f)
         )
 
-        drawCircle(
-            color = Color.Red,
-            radius = 280f,
-            this.center,
-            1f,
-            style = Fill,
-            null,
-            blendMode = BlendMode.Difference
+        drawRect(
+            color = Color(0xFF4384f3),
+            size = Size(width * .45f, 20f),
+            topLeft = Offset(width * .55f, height * .54f)
         )
 
-        drawCircle(
-            color = Color.White,
-            radius = 260f,
-            this.center,
-            1f,
-            style = Fill,
-            null,
-            blendMode = BlendMode.Difference
+        drawArc(
+            color = Color(0xFF4384f3),
+            startAngle = 0f,
+            sweepAngle = 45f,
+            useCenter = false,
+            style = Stroke(width = 40f)
+        )
+        drawArc(
+            color = Color(0xFF33a852),
+            startAngle = 45f,
+            sweepAngle = 135f,
+            useCenter = false,
+            style = Stroke(width = 40f)
+        )
+        drawArc(
+            color = Color(0xFFfabd03),
+            startAngle = 145f,
+            sweepAngle = 80f,
+            useCenter = false,
+            style = Stroke(width = 40f)
         )
 
-        val canvasWidth = size.width
-        val canvasHeight = size.height
-
-        drawLine(
-            start = Offset(x = canvasWidth / 2, y = 500f),
-            end = Offset(x = canvasWidth / 2, y = 800f),
-            color = Color.Red,
-            strokeWidth = 20F,
-            blendMode = BlendMode.Color,
-            cap = StrokeCap.Round
-        )
-
-        drawRoundRect(
-            color = Color.Red,
-            this.center,
-            style = Fill,
-            size = Size(100f, 200f),
-            blendMode = BlendMode.Difference,
-            cornerRadius = CornerRadius(6f, 6f)
+        drawArc(
+            color = Color(0xFFeb4435),
+            startAngle = 205f,
+            sweepAngle = 120f,
+            useCenter = false,
+            style = Stroke(width = 40f)
         )
     }
-
 }
 
 
