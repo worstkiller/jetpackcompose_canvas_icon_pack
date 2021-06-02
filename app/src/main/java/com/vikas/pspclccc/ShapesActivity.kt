@@ -6,20 +6,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,14 +33,22 @@ class ShapesActivity : ComponentActivity() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
-                instagramIcon()
-                facebookIcon()
-                messengerIcon()
-                googleIcon()
+                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                    instagramIcon()
+                    facebookIcon()
+                    messengerIcon()
+                }
+                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                    googleIcon()
+                    getYoutubeIcon()
+                    getGooglePhotosIcon()
+                }
+                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                    getRandomArc()
+                }
             }
         }
     }
-
 }
 
 @Composable
@@ -136,7 +143,6 @@ fun messengerIcon() {
     }
 }
 
-
 @Composable
 fun googleIcon() {
 
@@ -205,6 +211,119 @@ fun googleIcon() {
             style = Stroke(width = 40f)
         )
     }
+}
+
+@Composable
+fun getYoutubeIcon() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+
+        val path = Path().apply {
+            moveTo(size.width * .43f, size.height * .18f)
+            lineTo(size.width * .72f, size.height * .35f)
+            lineTo(size.width * .43f, size.height * .53f)
+            close()
+        }
+        drawRoundRect(
+            color = Color.Red,
+            cornerRadius = CornerRadius(40f, 40f),
+            size = Size(size.width, size.height * .70f)
+        )
+        drawPath(color = Color.White, path = path)
+    }
+}
+
+@Composable
+private fun getGooglePhotosIcon() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        drawArc(
+            color = Color(0xFFf04231),
+            startAngle = -90f,
+            sweepAngle = 180f,
+            useCenter = true,
+            size = Size(size.width * .50f, size.height * .50f),
+            topLeft = Offset(size.width * .25f, 0f)
+        )
+        drawArc(
+            color = Color(0xFF4385f7),
+            startAngle = 0f,
+            sweepAngle = 180f,
+            useCenter = true,
+            size = Size(size.width * .50f, size.height * .50f),
+            topLeft = Offset(size.width * .50f, size.height * .25f)
+        )
+        drawArc(
+            color = Color(0xFF30a952),
+            startAngle = 0f,
+            sweepAngle = -180f,
+            useCenter = true,
+            size = Size(size.width * .50f, size.height * .50f),
+            topLeft = Offset(0f, size.height * .25f)
+        )
+
+        drawArc(
+            color = Color(0xFFffbf00),
+            startAngle = 270f,
+            sweepAngle = -180f,
+            useCenter = true,
+            size = Size(size.width * .50f, size.height * .50f),
+            topLeft = Offset(size.width * .25f, size.height * .50f)
+        )
+
+
+    }
+}
+
+@Composable
+private fun getRandomArc() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        drawCircle(color = Color(0xFFF5F5F5))
+        drawCircle(
+            color = Color(0xFF4385f7),
+            radius = size.width * .20f,
+            center = Offset(size.width * .33f, size.height * .40f)
+        )
+        drawCircle(
+            color = Color(0xFFf04231),
+            radius = size.width * .12f,
+            center = Offset(size.width * .66f, size.height * .53f)
+        )
+        drawCircle(
+            color = Color(0xFFffbf00),
+            radius = size.width * .14f,
+            center = Offset(size.width * .66f, size.height * .83f)
+        )
+         drawCircle(
+            color = Color(0xFF30a952),
+            radius = size.width * .08f,
+            center = Offset(size.width * .84f, size.height * .37f)
+        )
+
+    }
+}
+
+fun getRandomColors(): List<Color> {
+    return listOf(
+        Color(0xFFffb74d),
+        Color(0xFFc0cb33),
+        Color(0xFF8cc34a),
+        Color(0xFF07acc1),
+        Color(0xFF65b5f5),
+        Color(0xFFba68c8),
+        Color(0xFFf48fb0),
+        Color(0xFFff5252),
+    ).reversed()
 }
 
 
