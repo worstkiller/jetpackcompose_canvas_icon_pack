@@ -6,19 +6,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
-import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,7 +41,7 @@ class ShapesActivity : ComponentActivity() {
                     getGooglePhotosIcon()
                 }
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                    getRandomArc()
+                    googleAssistant()
                 }
             }
         }
@@ -282,7 +279,7 @@ private fun getGooglePhotosIcon() {
 }
 
 @Composable
-private fun getRandomArc() {
+private fun googleAssistant() {
     Canvas(
         modifier = Modifier
             .size(100.dp)
@@ -304,7 +301,7 @@ private fun getRandomArc() {
             radius = size.width * .14f,
             center = Offset(size.width * .66f, size.height * .83f)
         )
-         drawCircle(
+        drawCircle(
             color = Color(0xFF30a952),
             radius = size.width * .08f,
             center = Offset(size.width * .84f, size.height * .37f)
