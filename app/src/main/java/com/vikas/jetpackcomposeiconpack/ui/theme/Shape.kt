@@ -1,4 +1,4 @@
-package com.vikas.pspclccc.ui.theme
+package com.vikas.jetpackcomposeiconpack.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

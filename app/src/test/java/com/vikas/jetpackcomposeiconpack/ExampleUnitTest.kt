@@ -1,4 +1,4 @@
-package com.vikas.pspclccc
+package com.vikas.jetpackcomposeiconpack
 
 import org.junit.Test
 

@@ -1,9 +1,8 @@
-package com.vikas.pspclccc
+package com.vikas.jetpackcomposeiconpack.random
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -14,11 +13,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.vector.DefaultTintBlendMode
 import androidx.compose.ui.tooling.preview.Preview
-import kotlinx.coroutines.delay
 
 class CanvasActivity : ComponentActivity() {
 

@@ -1,4 +1,4 @@
-package com.vikas.pspclccc
+package com.vikas.jetpackcomposeiconpack
 
 import android.graphics.Paint
 import android.graphics.Typeface

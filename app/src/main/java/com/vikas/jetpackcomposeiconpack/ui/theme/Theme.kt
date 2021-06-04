@@ -1,4 +1,4 @@
-package com.vikas.pspclccc.ui.theme
+package com.vikas.jetpackcomposeiconpack.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
