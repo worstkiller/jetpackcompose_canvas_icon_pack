@@ -10,13 +10,16 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,6 +46,10 @@ class ShapesActivity : ComponentActivity() {
                 }
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                     googleAssistant()
+                    googleAds()
+                }
+                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                    getStackOverflow()
                 }
             }
         }
@@ -317,7 +324,97 @@ private fun googleAssistant() {
     }
 }
 
+@Composable
+fun googleAds() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
 
+        rotate(30f) {
+            drawRoundRect(
+                color = Color(0xFFffbf00),
+                cornerRadius = CornerRadius(40f, 40f),
+                topLeft = Offset(26f, 5f),
+                size = Size(size.width * .35f, size.height)
+            )
+        }
+        rotate(-30f) {
+            drawRoundRect(
+                color = Color(0xFF4385f7),
+                cornerRadius = CornerRadius(40f, 40f),
+                topLeft = Offset(size.width.div(2), 0f),
+                size = Size(size.width * .35f, size.height)
+            )
+        }
+        drawCircle(color = Color(0xFF30a952), radius = 35f, center = Offset(30f, 145f))
+    }
+}
+
+@Composable
+fun getStackOverflow() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        drawRect(
+            color = Color(0xFFbcbbbb),
+            topLeft = Offset(size.width * .10f, size.height * .63f),
+            Size(size.width * .10f, size.height * .35f)
+        )
+        drawRect(
+            color = Color(0xFFbcbbbb),
+            topLeft = Offset(size.width * .10f, size.height * .89f),
+            Size(size.width * .89f, size.height * .10f)
+        )
+        drawRect(
+            color = Color(0xFFbcbbbb),
+            topLeft = Offset(size.width * .89f, size.height * .63f),
+            Size(size.width * .10f, size.height * .35f)
+        )
+
+        rotate(0f) {
+            drawRect(
+                color = Color(0xFFf48023),
+                topLeft = Offset(size.width * .28f, size.height * .72f),
+                Size(size.width * .54f, size.height * .10f)
+            )
+        }
+
+        rotate(6f) {
+            drawRect(
+                color = Color(0xFFf48023),
+                topLeft = Offset(size.width * .30f, size.height * .56f),
+                Size(size.width * .54f, size.height * .10f)
+            )
+        }
+
+        rotate(15f) {
+            drawRect(
+                color = Color(0xFFf48023),
+                topLeft = Offset(size.width * .30f, size.height * .40f),
+                Size(size.width * .54f, size.height * .10f)
+            )
+        }
+
+        rotate(24f) {
+            drawRect(
+                color = Color(0xFFf48023),
+                topLeft = Offset(size.width * .26f, size.height * .22f),
+                Size(size.width * .54f, size.height * .10f)
+            )
+        }
+        rotate(34f) {
+            drawRect(
+                color = Color(0xFFf48023),
+                topLeft = Offset(size.width * .22f, size.height * .06f),
+                Size(size.width * .54f, size.height * .10f)
+            )
+        }
+    }
+}
 
 fun getRandomColors(): List<Color> {
     return listOf(
