@@ -16,6 +16,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -285,30 +286,38 @@ private fun googleAssistant() {
             .size(100.dp)
             .padding(16.dp)
     ) {
-        drawCircle(color = Color(0xFFF5F5F5))
+
+        val paint = Paint().apply {
+            color = Color.White.toArgb()
+            setShadowLayer(20f, 0f, 0f, Color.DarkGray.copy(alpha = .20f).toArgb())
+        }
+        this.drawIntoCanvas {
+            it.nativeCanvas.drawOval(this.size.width, this.size.height, 0f, 0f, paint)
+        }
         drawCircle(
             color = Color(0xFF4385f7),
             radius = size.width * .20f,
-            center = Offset(size.width * .33f, size.height * .40f)
+            center = Offset(size.width * .33f, size.height * .35f)
         )
         drawCircle(
             color = Color(0xFFf04231),
             radius = size.width * .12f,
-            center = Offset(size.width * .66f, size.height * .53f)
+            center = Offset(size.width * .66f, size.height * .48f)
         )
         drawCircle(
             color = Color(0xFFffbf00),
             radius = size.width * .14f,
-            center = Offset(size.width * .66f, size.height * .83f)
+            center = Offset(size.width * .66f, size.height * .78f)
         )
         drawCircle(
             color = Color(0xFF30a952),
             radius = size.width * .08f,
-            center = Offset(size.width * .84f, size.height * .37f)
+            center = Offset(size.width * .84f, size.height * .32f)
         )
-
     }
 }
+
+
 
 fun getRandomColors(): List<Color> {
     return listOf(
