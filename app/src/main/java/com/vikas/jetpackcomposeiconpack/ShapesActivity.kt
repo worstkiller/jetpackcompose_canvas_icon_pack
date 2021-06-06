@@ -10,10 +10,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -47,10 +45,18 @@ class ShapesActivity : ComponentActivity() {
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                     googleAssistant()
                     googleAds()
+                    getGoogleVoiceSearch()
                 }
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                     getStackOverflow()
+                    getSpotify()
+//                    getSpotify()
                 }
+//                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+//                    getSpotify()
+//                    getSpotify()
+//                    getSpotify()
+//                }
             }
         }
     }
@@ -353,6 +359,58 @@ fun googleAds() {
 }
 
 @Composable
+fun getGoogleVoiceSearch() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+
+        val paint = Paint().apply {
+            color = Color.White.toArgb()
+            setShadowLayer(20f, 0f, 0f, Color.DarkGray.copy(alpha = .20f).toArgb())
+        }
+        this.drawIntoCanvas {
+            it.nativeCanvas.drawOval(this.size.width, this.size.height, 0f, 0f, paint)
+        }
+
+        drawRoundRect(
+            color = Color(0xFF4385f7),
+            cornerRadius = CornerRadius(40f, 40f),
+            topLeft = Offset(size.width.times(.40f), size.height.times(.20f)),
+            size = Size(size.width * .20f, size.height.times(.40f))
+        )
+
+        drawRect(
+            color = Color(0xFF30a952),
+            topLeft = Offset(size.width.times(.47f), size.height.times(.72f)),
+            size = Size(size.width.times(.08f), size.height.times(.17f))
+        )
+
+        drawArc(
+            color = Color(0xFFffbf00),
+            startAngle = 0f,
+            sweepAngle = 180f,
+            useCenter = false,
+            style = Stroke(width = size.width.times(.08f)),
+            size = Size(size.width.times(.40f), size.height.times(.40f)),
+            topLeft = Offset(size.width.times(.30f), size.height.times(.30f))
+        )
+
+        drawArc(
+            color = Color(0xFFf04231),
+            startAngle = 0f,
+            sweepAngle = 130f,
+            useCenter = false,
+            style = Stroke(width = size.width.times(.08f)),
+            size = Size(size.width.times(.40f), size.height.times(.40f)),
+            topLeft = Offset(size.width.times(.30f), size.height.times(.30f))
+        )
+
+    }
+}
+
+@Composable
 fun getStackOverflow() {
     Canvas(
         modifier = Modifier
@@ -413,6 +471,59 @@ fun getStackOverflow() {
                 Size(size.width * .54f, size.height * .10f)
             )
         }
+    }
+}
+
+@Composable
+fun getSpotify() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        val width = size.width
+        val height = size.height
+        val path = Path().apply {
+            moveTo(width.times(.18f), height.times(.34f))
+            cubicTo(
+                width.times(.18f),
+                height.times(.35f),
+                width.times(.45f),
+                height.times(.20f),
+                width.times(.83f),
+                height.times(.40f)
+            )
+            moveTo(
+                width.times(.28f),
+                height.times(.50f),
+            )
+            cubicTo(
+                width.times(.28f),
+                height.times(.50f),
+                width.times(.45f),
+                height.times(.43f),
+                width.times(.73f),
+                height.times(.55f)
+            )
+            moveTo(
+                width.times(.33f),
+                height.times(.67f),
+            )
+            cubicTo(
+                width.times(.33f),
+                height.times(.67f),
+                width.times(.45f),
+                height.times(.62f),
+                width.times(.67f),
+                height.times(.72f)
+            )
+        }
+        drawCircle(color = Color(0xFF1ed760))
+        drawPath(
+            path = path,
+            color = Color.Black,
+            style = Stroke(width = width.times(.09f), cap = StrokeCap.Round)
+        )
     }
 }
 
