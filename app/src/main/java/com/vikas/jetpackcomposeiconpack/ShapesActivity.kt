@@ -50,13 +50,13 @@ class ShapesActivity : ComponentActivity() {
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                     getStackOverflow()
                     getSpotify()
-//                    getSpotify()
+                    getTrello()
                 }
-//                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-//                    getSpotify()
-//                    getSpotify()
-//                    getSpotify()
-//                }
+                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                    getSpotify()
+                    getSpotify()
+                    getSpotify()
+                }
             }
         }
     }
@@ -523,6 +523,29 @@ fun getSpotify() {
             path = path,
             color = Color.Black,
             style = Stroke(width = width.times(.09f), cap = StrokeCap.Round)
+        )
+    }
+}
+
+@Composable
+fun getTrello() {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        drawRoundRect(color = Color(0xFF0269a9), cornerRadius = CornerRadius(20f, 20f))
+        drawRoundRect(
+            color = Color.White,
+            cornerRadius = CornerRadius(10f, 10f),
+            size = Size(width = size.width.times(.30f), size.height.times(.60f)),
+            topLeft = Offset(size.width.times(.13f), size.height.times(.20f))
+        )
+        drawRoundRect(
+            color = Color.White,
+            cornerRadius = CornerRadius(10f, 10f),
+            size = Size(width = size.width.times(.30f), size.height.times(.45f)),
+            topLeft = Offset(size.width.times(.58f), size.height.times(.20f))
         )
     }
 }
