@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -14,10 +15,7 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.drawscope.clipPath
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.graphics.drawscope.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,37 +25,42 @@ class ShapesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column(
-                Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceEvenly
-            ) {
-                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                    instagramIcon()
-                    facebookIcon()
-                    messengerIcon()
-                }
-                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                    googleIcon()
-                    getYoutubeIcon()
-                    getGooglePhotosIcon()
-                }
-                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                    googleAssistant()
-                    googleAds()
-                    getGoogleVoiceSearch()
-                }
-                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                    getStackOverflow()
-                    getSpotify()
-                    getTrello()
-                }
-                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                    getSpotify()
-                    getSpotify()
-                    getSpotify()
-                }
-            }
+            getAllIcons()
+        }
+    }
+}
+
+@Composable
+fun getAllIcons() {
+    Column(
+        Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceEvenly
+    ) {
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            instagramIcon()
+            facebookIcon()
+            messengerIcon()
+        }
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            googleIcon()
+            getYoutubeIcon()
+            getGooglePhotosIcon()
+        }
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            googleAssistant()
+            googleAds()
+            getGoogleVoiceSearch()
+        }
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            getStackOverflow()
+            getSpotify()
+            getTrello()
+        }
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            getLike()
+            getSpotify()
+            getSpotify()
         }
     }
 }
@@ -550,6 +553,61 @@ fun getTrello() {
     }
 }
 
+@Composable
+fun getLike() {
+
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        val width = size.width
+        val height = size.height
+        val pathHeart = Path().apply {
+            moveTo(width.times(.22f), height.times(.58f))
+            lineTo(width.times(.22f), height.times(.37f))
+            quadraticBezierTo(
+                width.times(.22f),
+                height.times(.34f),
+                width.times(.25f),
+                height.times(.34f)
+            )
+            lineTo(width.times(.54f), height.times(.34f))
+            quadraticBezierTo(
+                width.times(.62f),
+                height.times(.34f),
+                width.times(.62f),
+                height.times(.41f)
+            )
+            lineTo(width.times(.62f), height.times(.62f))
+            quadraticBezierTo(
+                width.times(.62f),
+                height.times(.65f),
+                width.times(.58f),
+                height.times(.65f)
+            )
+            lineTo(width.times(.30f), height.times(.65f))
+            quadraticBezierTo(
+                width.times(.22f),
+                height.times(.65f),
+                width.times(.22f),
+                height.times(.58f)
+            )
+            moveTo(width.times(.70f), height.times(.44f))
+            lineTo(width.times(.70f), height.times(.56f))
+            quadraticBezierTo(
+                width.times(.22f),
+                height.times(.65f),
+                width.times(.22f),
+                height.times(.58f)
+            )
+        }
+        drawCircle(color = Color.Red)
+        drawPath(pathHeart, color = Color.White, style = Stroke(width = 7f, cap = StrokeCap.Round))
+    }
+
+}
+
 fun getRandomColors(): List<Color> {
     return listOf(
         Color(0xFFffb74d),
@@ -567,5 +625,5 @@ fun getRandomColors(): List<Color> {
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
 fun showShapesPreview() {
-    instagramIcon()
+    getAllIcons()
 }
