@@ -5,7 +5,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -15,7 +14,10 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.drawscope.*
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,8 +60,8 @@ fun getAllIcons() {
             getTrello()
         }
         Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-            getLike()
-            getSpotify()
+            getZoom()
+            getJetpackCompose()
             getSpotify()
         }
     }
@@ -554,8 +556,8 @@ fun getTrello() {
 }
 
 @Composable
-fun getLike() {
-
+fun getZoom() {
+    val zoomColors = listOf(Color(0xFF56a2ff), Color(0xFF3d83fc))
     Canvas(
         modifier = Modifier
             .size(100.dp)
@@ -593,32 +595,62 @@ fun getLike() {
                 width.times(.22f),
                 height.times(.58f)
             )
-            moveTo(width.times(.70f), height.times(.44f))
-            lineTo(width.times(.70f), height.times(.56f))
-            quadraticBezierTo(
-                width.times(.22f),
-                height.times(.65f),
-                width.times(.22f),
-                height.times(.58f)
-            )
+            moveTo(width.times(.65f), height.times(.44f))
+            lineTo(width.times(.65f), height.times(.56f))
+            lineTo(width.times(.75f), height.times(.65f))
+            lineTo(width.times(.75f), height.times(.35f))
+            lineTo(width.times(.65f), height.times(.44f))
+            close()
         }
-        drawCircle(color = Color.Red)
-        drawPath(pathHeart, color = Color.White, style = Stroke(width = 7f, cap = StrokeCap.Round))
+        drawRoundRect(
+            brush = Brush.verticalGradient(zoomColors),
+            cornerRadius = CornerRadius(60f, 60f)
+        )
+        drawPath(pathHeart, color = Color.White)
     }
 
 }
 
-fun getRandomColors(): List<Color> {
-    return listOf(
-        Color(0xFFffb74d),
-        Color(0xFFc0cb33),
-        Color(0xFF8cc34a),
-        Color(0xFF07acc1),
-        Color(0xFF65b5f5),
-        Color(0xFFba68c8),
-        Color(0xFFf48fb0),
-        Color(0xFFff5252),
-    ).reversed()
+@Composable
+fun getJetpackCompose() {
+
+    Canvas(modifier = Modifier.size(100.dp)) {
+
+        val height = this.size.height
+        val width = this.size.width
+        drawArc(
+            color = Color(0xFF58bd46),
+            startAngle = 0f,
+            useCenter = false,
+            sweepAngle = -180f,
+            size = Size(width = width.times(.60f), height = height.times(.55f)),
+            topLeft = Offset(width.times(.25f), height.times(.30f))
+        )
+        drawCircle(
+            color = Color.White,
+            radius = width.times(.04f),
+            center = Offset(width.times(.45f), height.times(.45f))
+        )
+        drawCircle(
+            color = Color.White, radius = width.times(.04f),
+            center = Offset(width.times(.64f), height.times(.45f)),
+        )
+        drawLine(
+            color = Color(0xFF58bd46),
+            start = Offset(width.times(.40f), height.times(.42f)),
+            strokeWidth = 15f,
+            cap = StrokeCap.Round,
+            end = Offset(width.times(.29f), height.times(.29f))
+        )
+        drawLine(
+            color = Color(0xFF58bd46),
+            start = Offset(width.times(.68f), height.times(.40f)),
+            strokeWidth = 15f,
+            cap = StrokeCap.Round,
+            end = Offset(width.times(.76f), height.times(.27f))
+        )
+    }
+
 }
 
 
