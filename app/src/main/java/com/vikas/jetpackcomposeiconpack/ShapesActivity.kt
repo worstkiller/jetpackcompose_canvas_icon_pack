@@ -3,7 +3,6 @@ package com.vikas.jetpackcomposeiconpack
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Canvas
@@ -112,7 +111,7 @@ fun facebookIcon() {
             color = Color(0xFF1776d1),
             cornerRadius = CornerRadius(20f, 20f)
         )
-        drawContext.canvas.nativeCanvas.drawText("f", center.x + 25, center.y + 100, paint)
+        drawContext.canvas.nativeCanvas.drawText("f", center.x + 25, center.y + 90, paint)
     }
 }
 
