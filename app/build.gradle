@@ -7,8 +7,8 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.vikas.pspclccc"
-        minSdk 21
+        applicationId "com.vikas.jetpackcomposeiconpack"
+        minSdk 24
         targetSdk 30
         versionCode 1
         versionName "1.0"

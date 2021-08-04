@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -22,7 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-class ShapesActivity : ComponentActivity() {
+class ShapesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -187,7 +188,7 @@ fun googleIcon() {
 
         drawRect(
             color = Color(0xFF4384f3),
-            size = Size(width * .57f, 20f),
+            size = Size(width * .56f, 20f),
             topLeft = Offset(width * .55f, height * .45f)
         )
 
@@ -360,7 +361,7 @@ fun googleAds() {
                 size = Size(size.width * .35f, size.height)
             )
         }
-        drawCircle(color = Color(0xFF30a952), radius = 35f, center = Offset(33f, 130f))
+        drawCircle(color = Color(0xFF30a952), radius = 35f, center = Offset(30f, 145f))
     }
 }
 
@@ -630,15 +631,6 @@ fun getAndroidIcon() {
             size = Size(width = width.times(.60f), height = height.times(.55f)),
             topLeft = Offset(width.times(.25f), height.times(.30f))
         )
-        drawCircle(
-            color = Color.White,
-            radius = width.times(.04f),
-            center = Offset(width.times(.45f), height.times(.45f))
-        )
-        drawCircle(
-            color = Color.White, radius = width.times(.04f),
-            center = Offset(width.times(.64f), height.times(.45f)),
-        )
         drawLine(
             color = Color(0xFF58bd46),
             start = Offset(width.times(.40f), height.times(.42f)),
@@ -652,6 +644,15 @@ fun getAndroidIcon() {
             strokeWidth = 15f,
             cap = StrokeCap.Round,
             end = Offset(width.times(.76f), height.times(.27f))
+        )
+        drawCircle(
+            color = Color.White,
+            radius = width.times(.04f),
+            center = Offset(width.times(.45f), height.times(.45f))
+        )
+        drawCircle(
+            color = Color.White, radius = width.times(.04f),
+            center = Offset(width.times(.64f), height.times(.45f)),
         )
     }
 
