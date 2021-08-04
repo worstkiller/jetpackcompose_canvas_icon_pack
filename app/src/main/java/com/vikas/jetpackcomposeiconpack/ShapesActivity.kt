@@ -37,32 +37,32 @@ fun getAllIcons() {
     Column(
         Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
+        verticalArrangement = Arrangement.SpaceAround
     ) {
-        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+        Row(horizontalArrangement = Arrangement.SpaceAround) {
             instagramIcon()
             facebookIcon()
             messengerIcon()
         }
-        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+        Row(horizontalArrangement = Arrangement.SpaceAround) {
             googleIcon()
             getYoutubeIcon()
             getGooglePhotosIcon()
         }
-        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+        Row(horizontalArrangement = Arrangement.SpaceAround) {
             googleAssistant()
             googleAds()
             getGoogleVoiceSearch()
         }
-        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+        Row(horizontalArrangement = Arrangement.SpaceAround) {
             getStackOverflow()
             getSpotify()
             getTrello()
         }
-        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+        Row(horizontalArrangement = Arrangement.SpaceAround) {
             getZoom()
-            getJetpackCompose()
-            getSpotify()
+            getAndroidIcon()
+            getWeatherApp()
         }
     }
 }
@@ -165,7 +165,7 @@ fun googleIcon() {
     Canvas(
         modifier = Modifier
             .size(100.dp)
-            .padding(16.dp)
+            .padding(20.dp)
     ) {
         val width = this.size.width
         val height = this.size.height
@@ -187,7 +187,7 @@ fun googleIcon() {
 
         drawRect(
             color = Color(0xFF4384f3),
-            size = Size(width * .55f, 20f),
+            size = Size(width * .57f, 20f),
             topLeft = Offset(width * .55f, height * .45f)
         )
 
@@ -238,15 +238,16 @@ fun getYoutubeIcon() {
     ) {
 
         val path = Path().apply {
-            moveTo(size.width * .43f, size.height * .18f)
-            lineTo(size.width * .72f, size.height * .35f)
-            lineTo(size.width * .43f, size.height * .53f)
+            moveTo(size.width * .43f, size.height * .38f)
+            lineTo(size.width * .72f, size.height * .55f)
+            lineTo(size.width * .43f, size.height * .73f)
             close()
         }
         drawRoundRect(
             color = Color.Red,
             cornerRadius = CornerRadius(40f, 40f),
-            size = Size(size.width, size.height * .70f)
+            size = Size(size.width, size.height * .70f),
+            topLeft = Offset(size.width.times(.0f), size.height.times(.20f))
         )
         drawPath(color = Color.White, path = path)
     }
@@ -359,7 +360,7 @@ fun googleAds() {
                 size = Size(size.width * .35f, size.height)
             )
         }
-        drawCircle(color = Color(0xFF30a952), radius = 35f, center = Offset(30f, 145f))
+        drawCircle(color = Color(0xFF30a952), radius = 35f, center = Offset(33f, 130f))
     }
 }
 
@@ -612,9 +613,12 @@ fun getZoom() {
 }
 
 @Composable
-fun getJetpackCompose() {
+fun getAndroidIcon() {
 
-    Canvas(modifier = Modifier.size(100.dp)) {
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+    ) {
 
         val height = this.size.height
         val width = this.size.width
@@ -651,6 +655,59 @@ fun getJetpackCompose() {
         )
     }
 
+}
+
+@Composable
+fun getWeatherApp() {
+    val backgroundColor = listOf(Color(0xFF2078EE), Color(0xFF74E6FE))
+    val sunColor = listOf(Color(0xFFFFC200), Color(0xFFFFE100))
+    Canvas(
+        modifier = Modifier
+            .size(100.dp)
+            .padding(16.dp)
+    ) {
+        val width = size.width
+        val height = size.height
+        val path = Path().apply {
+            moveTo(width.times(.76f), height.times(.72f))
+            cubicTo(
+                width.times(.93f),
+                height.times(.72f),
+                width.times(.98f),
+                height.times(.41f),
+                width.times(.76f),
+                height.times(.40f)
+            )
+            cubicTo(
+                width.times(.75f),
+                height.times(.21f),
+                width.times(.35f),
+                height.times(.21f),
+                width.times(.38f),
+                height.times(.50f)
+            )
+            cubicTo(
+                width.times(.25f),
+                height.times(.50f),
+                width.times(.20f),
+                height.times(.69f),
+                width.times(.41f),
+                height.times(.72f)
+            )
+            close()
+        }
+        drawRoundRect(
+            brush = Brush.verticalGradient(backgroundColor),
+            cornerRadius = CornerRadius(50f, 50f),
+
+            )
+        drawCircle(
+            brush = Brush.verticalGradient(sunColor),
+            radius = width.times(.17f),
+            center = Offset(width.times(.35f), height.times(.35f))
+        )
+        drawPath(path = path, color = Color.White.copy(alpha = .90f))
+    }
 }
 
 
