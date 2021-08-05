@@ -1,17 +1,15 @@
 # Jetpack Compose Canvas API Demo App
-We all know that Jetpack Compose has now reached the 1.0.0 release milestone. This is a huge change we can say for the future for the Android applications. 
-Jetpack compose is reactive and more easy to develop and prototype something. 
-Given the nice API's i tried the Jetpack Compose Canvas API's.
+We all know that Jetpack Compose has now reached the 1.0.0 release milestone. This is a huge change we can say for the future of Android applications. 
+Jetpack compose is reactive way of developing UI's and more easy to develop a full fledge application or prototype something. 
+I was following the updates to Compose UI from some time and this time decided to do something with the Canvas. I can say I was never this much close to the Native Canvas Api's of the Android which i feel today after doing some experiments with it. I feel happy what i have achieved till now with it and excited to show you all. There is lot more to explore but this is what i have for now to share with you all.
 
 ## 📱Screenshots
 Black | White
 ------------ | -------------
-<img src="https://github.com/worstkiller/jetpackcompose_canvas_icon_pack
-/blob/master/screenshots/black_2.jpg" height="649" width="300">|<img src="https://github.com/worstkiller/jetpackcompose_canvas_icon_pack
-/blob/master/screenshots/white_1.jpg.jpg" height="649" width="350">
+<img src="https://github.com/worstkiller/jetpackcompose_canvas_icon_pack/blob/master/screenshots/black_2.jpg" height="649" width="300">|<img src="https://github.com/worstkiller/jetpackcompose_canvas_icon_pack/blob/master/screenshots/white_1.jpg" height="649" width="300">
 
 ## 🖥️ Tech
-- [Jetpack Compose](https://developer.android.com/jetpack/compose)
+- [Jetpack Compose 1.0](https://developer.android.com/jetpack/compose)
 - [Android Studio Arctic Fox 2020.3.1](https://android-developers.googleblog.com/2021/05/android-studio-arctic-fox-beta.html)
 
 
@@ -21,8 +19,8 @@ Black | White
 - Run in Android emulator or Device from Android Studio
 
 
-## ✔️ Code Sample Sections
-This much code creates an Instagram Icon, it's cool right 😃.
+## ✔️ Code Sample Section
+This much code creates an Instagram Icon, it's cool right 😃
 ```kotlin
 @Composable
 fun instagramIcon() {
@@ -77,7 +75,7 @@ fun getYoutubeIcon() {
     }
 }    
 ```
-There are much more in the code, all the are simple enough to follow and build. This shows the how easy the new Jetpack compose Canvas api's are to follow and play around.
+There are much more in the code, all are simple enough to follow and create. This shows how easy the new Jetpack compose Canvas api's are to follow and play around.
 
 
 ## 💁 Feel Free to Reach for :
